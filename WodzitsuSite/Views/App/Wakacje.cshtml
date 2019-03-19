@@ -1,0 +1,28 @@
+﻿@*
+	For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<Tour>
+@{
+}
+@foreach (var p in Model)
+{
+	<div class="row border bg-light rounded p-1 mb-2">
+		<div class="col-xl-3">
+			<img src="~/img/@p.Zdjecie" class="img-fluid img-rounded"/>
+		</div>
+		<div class="col-xl-8">
+			<div>@p.Name</div>
+			<ul>
+				<li>Termin: @p.TerminOd.Date.ToString("dd-MM-yyyy") - @p.TerminDo.Date.ToString("dd-MM-yyyy")</li>
+				<li>@p.SamolotFirma: @p.SamolotCena zł</li>
+				<li>Hotel: @p.HotelCena zł</li>
+				<li>Organizator: @p.Organizator</li>
+			</ul>
+			<div>@p.Opis</div>
+		</div>
+		<div class="col-xl-1">
+			<div>Cena: @(p.HotelCena * Decimal.Parse((p.TerminDo - p.TerminOd).TotalDays.ToString()) + p.SamolotCena)zł</div>
+			<div></div>
+		</div>
+	</div>
+}
