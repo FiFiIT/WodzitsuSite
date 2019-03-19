@@ -3250,7 +3250,7 @@
     "Microsoft.Net.Compilers/2.8.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-hivgmPfV/V6xVaOj6pFn1mvILgRwyySAdfg56/W83dRBON6ww+to2xUsulQX3kFNY5hne0lilsy0i0VJNQMQGg==",
+      "sha512": "sha512-Nx0dMg9LFNSs4HN1M/eWj+qZGSIm9fT+ZQpDwW8E4DIcUNVTU4PIbe/JkGOAXklyEpY96XUNyQXnuh8ar+6pCQ==",
       "path": "microsoft.net.compilers/2.8.2",
       "hashPath": "microsoft.net.compilers.2.8.2.nupkg.sha512"
     },
@@ -3299,14 +3299,14 @@
     "NETStandard.Library/2.0.3": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-548M6mnBSJWxsIlkQHfbzoYxpiYFXZZSL00p4GHYv8PkiqFBnnT68mW5mGEsA/ch9fDO9GkPgkFQpWiXZN7mAQ==",
+      "sha512": "sha512-st47PosZSHrjECdjeIzZQbzivYBJFv6P2nv4cj2ypdI204DO+vZ7l5raGMiX4eXMJ53RfOIg+/s4DHVZ54Nu2A==",
       "path": "netstandard.library/2.0.3",
       "hashPath": "netstandard.library.2.0.3.nupkg.sha512"
     },
     "OdeToCode.UseNodeModules/1.0.6": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-92heRz3S/4SLkiMgvEqpvyHZRvxHkdfipPvnimNZnE4LlEG15J8XTdryXEglIqnvqjRvx/DJDChbtGOyGwgOsA==",
+      "sha512": "sha512-mE838R7RdMaQ3csLrWMCeeG8UtL5jdfEFlYjRTit6EfOTB17sLoV/tmNdAXl59ht0Rcb+9m3t9rqyC7gVEz21A==",
       "path": "odetocode.usenodemodules/1.0.6",
       "hashPath": "odetocode.usenodemodules.1.0.6.nupkg.sha512"
     },
@@ -3320,7 +3320,7 @@
     "Microsoft.AspNetCore/2.2.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-kkktm2qclx/caMJcwxMstxcowWgUGR4gvKdJwb2Z2mPa8zeOfWwc30Ou0S6ZBJUB6Nre/2ub6tAylMJURpkjhg==",
+      "sha512": "sha512-Bs75iht4lXS8uVWy/Cbsr9i0m2jRtnrfPEWU+6t0dQTZcJEfF9b7G2F7XvstLFWkAKSgYRzFkAwi/KypY0Qtew==",
       "path": "microsoft.aspnetcore/2.2.0",
       "hashPath": "microsoft.aspnetcore.2.2.0.nupkg.sha512"
     },
@@ -3663,7 +3663,7 @@
     "Microsoft.AspNetCore.Mvc/2.2.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-0arXKbaO07TK6C4QtcIBYHfAjkaUNdKAToMHYZAA8MSpWInhdYwv5rz3RtT00I1E//r+uzpqlUvTWuQcdvZOlQ==",
+      "sha512": "sha512-noun9xcrEvOs/ubczt2OluY9/bOOM2erv1D/gyyYtfS2sfyx2uGknUIAWoqmqc401TvQDysyx8S4M9j5zPIVBw==",
       "path": "microsoft.aspnetcore.mvc/2.2.0",
       "hashPath": "microsoft.aspnetcore.mvc.2.2.0.nupkg.sha512"
     },
@@ -4468,7 +4468,7 @@
     "Newtonsoft.Json/11.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-znZGbws7E4BA9jxNZ7FuiIRI3C9hrgatVQSTKhIYZYNOud4M5VfGlTYi6RdYO5sQrebFuF/g9UEV3hOxDMXF6Q==",
+      "sha512": "sha512-IvJe1pj7JHEsP8B8J8DwlMEx8UInrs/x+9oVY+oCD13jpLu4JbJU2WCIsMRn5C4yW9+DgkaO8uiVE5VHKjpmdQ==",
       "path": "newtonsoft.json/11.0.2",
       "hashPath": "newtonsoft.json.11.0.2.nupkg.sha512"
     },
@@ -4678,7 +4678,7 @@
     "System.ComponentModel.Annotations/4.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-f1ApUHGWq/lJC8PZE7JqbA3tiY7ZngZQO2mbYfCG0JlQVVUqqmVMAy0fMvAwEuG639M47ELdP6PQxc5OIo6i6A==",
+      "sha512": "sha512-UxYQ3FGUOtzJ7LfSdnYSFd7+oEv6M8NgUatatIN2HxNtDdlcvFAf+VIq4Of9cDMJEJC0aSRv/x898RYhB4Yppg==",
       "path": "system.componentmodel.annotations/4.5.0",
       "hashPath": "system.componentmodel.annotations.4.5.0.nupkg.sha512"
     },
@@ -4713,7 +4713,7 @@
     "System.Diagnostics.DiagnosticSource/4.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-zgwboUmA+bhTe+Sk+cLaqqHHDvdM2v0Ra//St8pIzx8+RJeV/1F1SNGkLCf+mo+eZv++HJ/RG6HWKNgirJN2NA==",
+      "sha512": "sha512-eIHRELiYDQvsMToML81QFkXEEYXUSUT2F28t1SGrevWqP+epFdw80SyAXIKTXOHrIEXReFOEnEr7XlGiC2GgOg==",
       "path": "system.diagnostics.diagnosticsource/4.5.0",
       "hashPath": "system.diagnostics.diagnosticsource.4.5.0.nupkg.sha512"
     },
@@ -5126,7 +5126,7 @@
     "System.Text.Encoding.CodePages/4.5.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-aQnlUgT+JK/81iv62zE7hR7FZJOgKbMNuxlK5l6u3CchtZ2FG5LIMnedmvVgT1phTnX4qWCUIoyfGTQlxrLNog==",
+      "sha512": "sha512-S0wEUiKcLvRlkFUXca8uio1UQ5bYQzYgOmOKtCqaBQC3GR9AJjh43otcM32IGsAyvadFTaAMw9Irm6dS4Evfng==",
       "path": "system.text.encoding.codepages/4.5.0",
       "hashPath": "system.text.encoding.codepages.4.5.0.nupkg.sha512"
     },
@@ -5175,7 +5175,7 @@
     "System.Threading.Tasks.Extensions/4.5.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-L1Zt2zXgsKYistLZdhod2qqdqly3T2QUBZOBroIm4V6lD17/JBzfhc0zfBzg3As2EYhQvEPqUWhcJ+9m570gPg==",
+      "sha512": "sha512-WSKUTtLhPR8gllzIWO2x6l4lmAIfbyMAiTlyXAis4QBDonXK4b4S6F8zGARX4/P8wH3DH+sLdhamCiHn+fTU1A==",
       "path": "system.threading.tasks.extensions/4.5.1",
       "hashPath": "system.threading.tasks.extensions.4.5.1.nupkg.sha512"
     },
