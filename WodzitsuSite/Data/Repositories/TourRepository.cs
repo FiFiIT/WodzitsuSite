@@ -19,5 +19,16 @@ namespace WodzitsuSite.Data.Repositories
         {
             return context.Tours.OrderBy(t => t.Name);
         }
+
+        public Tour GetTour(int id)
+        {
+            return context.Tours.FirstOrDefault(t => t.Id == id);
+        }
+
+        public void SaveTour(Tour tour)
+        {
+            context.Tours.Add(tour);
+            context.SaveChanges();
+        }
     }
 }

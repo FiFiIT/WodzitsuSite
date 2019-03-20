@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using WodzitsuSite.Data;
 using Microsoft.EntityFrameworkCore;
 using WodzitsuSite.Data.Repositories;
+using Microsoft.AspNetCore.Identity;
+using WodzitsuSite.Data.Entities;
 
 namespace WodzitsuSite
 {
@@ -24,6 +26,13 @@ namespace WodzitsuSite
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentity<Czlopok, IdentityRole>(cfg =>
+            {
+                cfg.User.RequireUniqueEmail = true;
+            })
+                .AddEntityFrameworkStores<TourContext>();
+
+            services.AddTransient<TourSeeder>();
             services.AddDbContext<TourContext>(cfg => cfg.UseSqlServer(Configuration.GetConnectionString("Wodzitsu")));
             services.AddScoped<ITourRepository, TourRepository>();
             services.AddMvc();
@@ -34,6 +43,7 @@ namespace WodzitsuSite
         {
             app.UseStaticFiles();
             app.UseNodeModules(env);
+            app.UseAuthentication();
 
             app.UseMvc(cfg =>
             {

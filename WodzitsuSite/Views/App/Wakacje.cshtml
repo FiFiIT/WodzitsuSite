@@ -7,10 +7,10 @@
 @foreach (var p in Model)
 {
 	<div class="row border bg-light rounded p-1 mb-2">
-		<div class="col-xl-3">
+		<div class="col-md-3">
 			<img src="~/img/@p.Zdjecie" class="img-fluid img-rounded"/>
 		</div>
-		<div class="col-xl-8">
+		<div class="col-md-8">
 			<div>@p.Name</div>
 			<ul>
 				<li>Termin: @p.TerminOd.Date.ToString("dd-MM-yyyy") - @p.TerminDo.Date.ToString("dd-MM-yyyy")</li>
@@ -20,9 +20,13 @@
 			</ul>
 			<div>@p.Opis</div>
 		</div>
-		<div class="col-xl-1">
+		<div class="col-md-1">
 			<div>Cena: @(p.HotelCena * Decimal.Parse((p.TerminDo - p.TerminOd).TotalDays.ToString()) + p.SamolotCena)zł</div>
-			<div></div>
+			<div class="justify-content-center">
+				<a asp-action="Edit" asp-route-id="@p.Id" class="btn btn-primary mb-2 mt-2">Edytuj</a>
+				<a asp-action="Delete" asp-route-id="@p.Id" type="button" class="btn btn-danger">Usun</a>
+			</div>
 		</div>
 	</div>
 }
+<a asp-action="Add" class="btn btn-success">Dodaj Nowe</a>

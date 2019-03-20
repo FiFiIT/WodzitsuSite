@@ -24,4 +24,6 @@ D:\nauka\GitHub\WodzitsuSite\WodzitsuSite\obj\Debug\netcoreapp2.2\WodzitsuSite.V
 D:\nauka\GitHub\WodzitsuSite\WodzitsuSite\obj\Debug\netcoreapp2.2\WodzitsuSite.dll
 D:\nauka\GitHub\WodzitsuSite\WodzitsuSite\obj\Debug\netcoreapp2.2\WodzitsuSite.pdb
 D:\nauka\GitHub\WodzitsuSite\WodzitsuSite\obj\Debug\netcoreapp2.2\WodzitsuSite.csproj.CopyComplete
-D:\nauka\GitHub\WodzitsuSite\WodzitsuSite\obj\Debug\netcoreapp2.2\WodzitsuSite.csprojAssemblyReference.cache
+D:\nauka\GitHub\WodzitsuSite\WodzitsuSite\obj\Debug\netcoreapp2.2\WodzitsuSite.csprojResolveAssemblyReference.cache
+D:\nauka\GitHub\WodzitsuSite\WodzitsuSite\obj\Debug\netcoreapp2.2\Razor\Views\Account\Login.g.cshtml.cs
+D:\nauka\GitHub\WodzitsuSite\WodzitsuSite\obj\Debug\netcoreapp2.2\Razor\Views\App\Add.g.cshtml.cs

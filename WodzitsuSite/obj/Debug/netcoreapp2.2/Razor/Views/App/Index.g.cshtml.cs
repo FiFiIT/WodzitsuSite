@@ -28,8 +28,13 @@ using WodzitsuSite.Data.Entities;
 
 #line default
 #line hidden
+#line 4 "D:\nauka\GitHub\WodzitsuSite\WodzitsuSite\_ViewImports.cshtml"
+using WodzitsuSite.ViewModels;
+
+#line default
+#line hidden
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1bf0eb4f21cb00767ad981b72257fddbee57d8fc", @"/Views/App/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"188140819edf925688152f244789f8ca1a174524", @"/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"665da5a64510d504d23cd14bda424716978ac717", @"/_ViewImports.cshtml")]
     public class Views_App_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

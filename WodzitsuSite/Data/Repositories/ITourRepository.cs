@@ -9,5 +9,7 @@ namespace WodzitsuSite.Data.Repositories
     public interface ITourRepository
     {
         IEnumerable<Tour> GetAllTours();
+        Tour GetTour(int id);
+        void SaveTour(Tour tour);
     }
 }
