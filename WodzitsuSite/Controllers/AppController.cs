@@ -40,9 +40,17 @@ namespace WodzitsuSite.Controllers
         [HttpPost]
         public IActionResult Add(Tour createTour)
         {
-            repo.SaveTour(createTour);
+            if(ModelState.IsValid)
+            {
+                repo.SaveTour(createTour);
 
-            return RedirectToAction("Wakacje", "App");
+                return RedirectToAction("Wakacje", "App");
+            }
+            else
+            {
+                ModelState.TryAddModelError("", "Failed to login");
+                return View();
+            }
         }
 
         [HttpGet]
