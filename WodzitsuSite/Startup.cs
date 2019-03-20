@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using WodzitsuSite.Data.Repositories;
 using Microsoft.AspNetCore.Identity;
 using WodzitsuSite.Data.Entities;
+using System.Net;
+using Microsoft.AspNetCore.HttpOverrides;
 
 namespace WodzitsuSite
 {
@@ -32,6 +34,11 @@ namespace WodzitsuSite
             })
                 .AddEntityFrameworkStores<TourContext>();
 
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
+            });
+
             services.AddTransient<TourSeeder>();
             services.AddDbContext<TourContext>(cfg => cfg.UseSqlServer(Configuration.GetConnectionString("Wodzitsu")));
             services.AddScoped<ITourRepository, TourRepository>();
@@ -43,6 +50,12 @@ namespace WodzitsuSite
         {
             app.UseStaticFiles();
             app.UseNodeModules(env);
+
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+
             app.UseAuthentication();
 
             app.UseMvc(cfg =>

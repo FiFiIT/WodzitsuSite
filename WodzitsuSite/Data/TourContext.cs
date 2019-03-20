@@ -10,7 +10,10 @@ namespace WodzitsuSite.Data
 {
     public class TourContext : IdentityDbContext<Czlopok>
     {
-        public TourContext(DbContextOptions<TourContext> options) : base(options) { }
+        public TourContext(DbContextOptions<TourContext> options) 
+            : base(options)
+        {
+        }
 
         public DbSet<Tour> Tours { get; set; }
 

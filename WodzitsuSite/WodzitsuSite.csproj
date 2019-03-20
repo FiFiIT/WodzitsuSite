@@ -9,8 +9,10 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.3" />
     <PackageReference Include="Microsoft.Net.Compilers" Version="2.8.2" />
     <PackageReference Include="OdeToCode.UseNodeModules" Version="1.0.6" />
+	<Content Include="node_modules\**" CopyToPublishDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
