@@ -15,6 +15,18 @@ namespace WodzitsuSite.Data.Repositories
             this.context = context;
         }
 
+        public void DeleteTour(int Id)
+        {
+            var tour = GetTour(Id);
+
+            if(tour != null)
+            {
+                context.Tours.Remove(tour);
+                context.SaveChanges();
+            }
+            
+        }
+
         public IEnumerable<Tour> GetAllTours()
         {
             return context.Tours.OrderBy(t => t.Name);
@@ -28,6 +40,12 @@ namespace WodzitsuSite.Data.Repositories
         public void SaveTour(Tour tour)
         {
             context.Tours.Add(tour);
+            context.SaveChanges();
+        }
+
+        public void UpdateTour(Tour editTour)
+        {
+            context.Tours.Update(editTour);
             context.SaveChanges();
         }
     }

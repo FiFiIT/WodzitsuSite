@@ -52,12 +52,44 @@ namespace WodzitsuSite.Controllers
                 return View();
             }
         }
-
         [HttpGet]
-        public IActionResult Edit(int tourID)
+        public IActionResult Edit(int Id)
         {
-            Tour tour = repo.GetTour(tourID);
-            return RedirectToAction("Index", "App", tour);
+            Tour tour = repo.GetTour(Id);
+
+            if(tour == null)
+            {
+                return RedirectToAction("Wakacje");
+            }
+
+            return View(tour);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Tour editTour)
+        {
+            if(!ModelState.IsValid)
+            {
+                ModelState.TryAddModelError("", "Nie udało się zaktualizowac wycieczki");
+                return View(editTour);
+            }
+            else
+            {
+                repo.UpdateTour(editTour);
+            }
+
+            return RedirectToAction("Wakacje");
+        }
+        [HttpGet]
+        public IActionResult Delete(string id)
+        {
+            bool resutl = Int16.TryParse(id, out short tripID);
+            if(resutl)
+            {
+                repo.DeleteTour(tripID);
+            }
+
+            return RedirectToAction("Wakacje");
         }
 
     }

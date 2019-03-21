@@ -4,6 +4,10 @@
 @model IEnumerable<Tour>
 @{
 }
+@section Scripts {
+	<script src="~/js/JavaScript.js"></script>
+}
+
 @foreach (var p in Model)
 {
 	<div class="row border bg-light rounded p-1 mb-2">
@@ -23,10 +27,29 @@
 		<div class="col-md-1">
 			<div>Cena: @(p.HotelCena * Decimal.Parse((p.TerminDo - p.TerminOd).TotalDays.ToString()) + p.SamolotCena)zł</div>
 			<div class="justify-content-center">
-				<a asp-action="Edit" asp-route-id="@p.Id" class="btn btn-primary mb-2 mt-2">Edytuj</a>
-				<a asp-action="Delete" asp-route-id="@p.Id" type="button" class="btn btn-danger">Usun</a>
+				<a asp-action="Edit" asp-route-id="@p.Id" class="btn btn-primary mb-2 mt-2 btn-block">Edytuj</a>
+				<button type="button" class="identifyingClass btn btn-warning btn-block" data-toggle="modal" data-target="#myModal" data-id="@p.Id" data-name="@p.Name">Usuń</button>
 			</div>
 		</div>
 	</div>
 }
-<a asp-action="Add" class="btn btn-success">Dodaj Nowe</a>
+<a  asp-controller="App" asp-action="Add" class="btn btn-success">Dodaj Wycieczkę</a>
+
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title"></h4>
+			</div>
+			<div class="modal-body">
+				<p>Jestes pewien ze chcesz usunąć tą wycieczkę?</p>
+			</div>
+			<div class="modal-footer">
+				<a class="btn btn-primary" data-dismiss="modal">Nie</a>
+				<a id="removeTrip" class="btn btn-primary">Tak</a>
+			</div>
+		</div>
+
+	</div>
+</div>

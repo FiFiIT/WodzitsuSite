@@ -6,15 +6,18 @@ using System.Threading.Tasks;
 
 namespace WodzitsuSite.Data.Entities
 {
-    public class Tour
+    public class Tour : IValidatableObject
     {
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
-        [DataType(DataType.DateTime)]
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public DateTime TerminOd { get; set; }
-        [DataType(DataType.DateTime)]
+
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public DateTime TerminDo { get; set; }
+
         public string SamolotFirma { get; set; }
         [Required]
         public decimal SamolotCena { get; set; }
@@ -27,5 +30,16 @@ namespace WodzitsuSite.Data.Entities
         [Required]
         [MinLength(10)]
         public string Opis { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            List<ValidationResult> res = new List<ValidationResult>();
+            if (TerminDo < TerminOd)
+            {
+                ValidationResult mss = new ValidationResult("'Termin do' jest ustawiany przed 'Temrmin od'");
+                res.Add(mss);
+            }
+            return res;
+        }
     }
 }

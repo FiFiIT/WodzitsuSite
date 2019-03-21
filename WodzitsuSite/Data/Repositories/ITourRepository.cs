@@ -11,5 +11,7 @@ namespace WodzitsuSite.Data.Repositories
         IEnumerable<Tour> GetAllTours();
         Tour GetTour(int id);
         void SaveTour(Tour tour);
+        void UpdateTour(Tour editTour);
+        void DeleteTour(int t);
     }
 }
