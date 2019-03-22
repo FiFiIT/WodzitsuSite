@@ -32,6 +32,7 @@
 
 			reader.onload = function (e) {
 				$('#img-upload').attr('src', e.target.result);
+
 			}
 
 			reader.readAsDataURL(input.files[0]);

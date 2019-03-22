@@ -6,62 +6,84 @@
 	<script src="~/js/JavaScript.js"></script>
 }
 <div class="row border bg-light rounded p-1 mb-2">
-	<div class="col-md-3">
-		<div class="form-group">
-			<label>Upload Image</label>
-			<div class="input-group">
-				<span class="input-group-btn">
-					<span class="btn btn-default btn-file">
-						Browse… <input type="file" id="imgInp">
+	@*<div class="col-md-3">
+			<div class="form-group">
+				<label>Upload Image</label>
+				<div class="input-group">
+					<span class="input-group-btn">
+						<span class="btn btn-default btn-file">
+							Browse… <input type="file" id="imgInp">
+						</span>
 					</span>
-				</span>
-				<input type="text" class="form-control" readonly>
+					<input type="text" class="form-control" readonly>
+				</div>
+				<img id='img-upload' asp-for="Zdjecie" />
 			</div>
-			<img id='img-upload' />
-		</div>
+			<img id='img-upload' asp-for="Zdjecie" />
+		</div>*@
+	@*<div class="col-md-3">
+		<form method="post" enctype="multipart/form-data" asp-controller="App" asp-action="UploadFiles">
+			<div class="form-group">
+				<div class="col-md-10">
+					<p>Upload one or more files using this form:</p>
+					<input type="file" name="files" multiple />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-10">
+					<input type="submit" value="Upload" />
+				</div>
+			</div>
+		</form>
+	</div>*@
+	<div class="col-md-3">
+		<img id='img-upload' asp-for="Zdjecie" />
 	</div>
 
 	<div class="col-md-9">
-		<form method="post">
+		<form method="post" enctype="multipart/form-data">
 			<div asp-validation-summary="ModelOnly"></div>
 			<div class="form-group">
+				<input id="imgInp" type="file" name="files" class="form-control" />
+			</div>
+			<div class="form-group">
 				<label asp-for="Name">Nazwa</label>
-				<input asp-for="Name" class="form-control"/>
+				<input asp-for="Name" class="form-control" />
 				<span asp-validation-for="Name" class="text-warning"></span>
 			</div>
 			<div class="form-group">
 				<label asp-for="TerminOd">Termin od:</label>
-				<input asp-for="TerminOd" type="datetime" class="form-control"/>
+				<input asp-for="TerminOd" type="datetime" class="form-control" />
 				<span asp-validation-for="TerminOd" class="text-warning"></span>
 			</div>
 			<div class="form-group">
 				<label asp-for="TerminDo">Termin do:</label>
-				<input asp-for="TerminDo" type="datetime" class="form-control"/>
+				<input asp-for="TerminDo" type="datetime" class="form-control" />
 				<span asp-validation-for="TerminDo" class="text-warning"></span>
 			</div>
 			<div class="form-group">
 				<label asp-for="SamolotFirma">Samolot:</label>
-				<input asp-for="SamolotFirma" class="form-control"/>
+				<input asp-for="SamolotFirma" class="form-control" />
 				<span asp-validation-for="SamolotFirma" class="text-warning"></span>
 			</div>
 			<div class="form-group">
 				<label asp-for="SamolotCena">Samolot Cena:</label>
-				<input asp-for="SamolotCena" class="form-control"/>
+				<input asp-for="SamolotCena" class="form-control" />
 				<span asp-validation-for="SamolotCena" class="text-warning"></span>
 			</div>
 			<div class="form-group">
 				<label asp-for="Hotel">Hotel:</label>
-				<input asp-for="Hotel" class="form-control"/>
+				<input asp-for="Hotel" class="form-control" />
 				<span asp-validation-for="Hotel" class="text-warning"></span>
 			</div>
 			<div class="form-group">
 				<label asp-for="HotelCena">Hotel Cena:</label>
-				<input asp-for="HotelCena" class="form-control"/>
+				<input asp-for="HotelCena" class="form-control" />
 				<span asp-validation-for="HotelCena" class="text-warning"></span>
 			</div>
 			<div class="form-group">
 				<label asp-for="Organizator">Organizator:</label>
-				<input asp-for="Organizator" value="@User.Identity.Name" class="form-control"/>
+				<input asp-for="Organizator" value="@User.Identity.Name" class="form-control" />
 				<span asp-validation-for="Organizator" class="text-warning"></span>
 			</div>
 			<div class="form-group">
