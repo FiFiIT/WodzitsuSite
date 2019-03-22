@@ -75,7 +75,7 @@ namespace WodzitsuSite.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Tour editTour)
+        public IActionResult Edit(Tour editTour, List<IFormFile> files)
         {
             if(!ModelState.IsValid)
             {
@@ -84,6 +84,13 @@ namespace WodzitsuSite.Controllers
             }
             else
             {
+                if (files.Count() > 0)
+                {
+                    var zdjęcia = UploadFiles(files);
+                    zdjęcia.Wait();
+                    editTour.Zdjecie = zdjęcia.Result.ToString();
+                }
+
                 repo.UpdateTour(editTour);
             }
 
