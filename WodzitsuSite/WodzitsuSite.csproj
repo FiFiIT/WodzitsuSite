@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <RootNamespace>WodzitsuSite</RootNamespace>
+    <UserSecretsId>e308b454-8033-4fdd-a159-51b331fef468</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>

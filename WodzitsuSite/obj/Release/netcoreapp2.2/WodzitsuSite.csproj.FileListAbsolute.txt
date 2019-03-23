@@ -27,3 +27,4 @@ D:\GitHub\WodzitsuSite\WodzitsuSite\obj\Release\netcoreapp2.2\WodzitsuSite.Views
 D:\GitHub\WodzitsuSite\WodzitsuSite\obj\Release\netcoreapp2.2\WodzitsuSite.dll
 D:\GitHub\WodzitsuSite\WodzitsuSite\obj\Release\netcoreapp2.2\WodzitsuSite.pdb
 D:\GitHub\WodzitsuSite\WodzitsuSite\obj\Release\netcoreapp2.2\WodzitsuSite.csproj.CopyComplete
+D:\GitHub\WodzitsuSite\WodzitsuSite\obj\Release\netcoreapp2.2\Razor\Views\App\Edit.g.cshtml.cs

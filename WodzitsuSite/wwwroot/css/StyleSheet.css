@@ -22,3 +22,9 @@
 #img-upload {
 	width: 100%;
 }
+
+#img-Name {
+	border: 0px solid;
+	background: none;
+	/*display: none;*/
+}

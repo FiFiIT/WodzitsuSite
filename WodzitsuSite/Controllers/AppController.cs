@@ -86,6 +86,9 @@ namespace WodzitsuSite.Controllers
             {
                 if (files.Count() > 0)
                 {
+                    //remove old picture
+                    RemoveFile(editTour.Zdjecie);
+
                     var zdjęcia = UploadFiles(files);
                     zdjęcia.Wait();
                     editTour.Zdjecie = zdjęcia.Result.ToString();
@@ -106,6 +109,20 @@ namespace WodzitsuSite.Controllers
             }
 
             return RedirectToAction("Wakacje");
+        }
+
+        private void RemoveFile(string fileName)
+        {
+            if(String.IsNullOrEmpty(fileName))
+            {
+                return;
+            }
+
+            var fullName = Path.Combine(env.WebRootPath, "img", Path.GetFileName(fileName));
+            if(System.IO.File.Exists(fullName))
+            {
+                System.IO.File.Delete(fullName);
+            }
         }
 
         private async Task<string> UploadFiles(List<IFormFile> files)

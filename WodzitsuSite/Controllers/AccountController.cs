@@ -60,5 +60,10 @@ namespace WodzitsuSite.Controllers
             await signInManager.SignOutAsync();
             return RedirectToAction("Index", "App");
         }
+        [HttpGet]
+        public IActionResult Manage()
+        {
+            return View();
+        }
     }
 }
