@@ -5,27 +5,26 @@
 @{
 }
 @section Scripts {
-	<script src="~/js/JavaScript.js"></script>
+	@*<script src="~/js/JavaScript.js"></script>*@
 }
-
 @foreach (var p in Model)
 {
 	<div class="row border bg-light rounded p-1 mb-2">
 		<div class="col-md-3">
-			<img src="~/img/@p.Zdjecie" class="img-fluid img-rounded"/>
+			<img src="~/img/@p.Zdjecie" class="img-fluid img-rounded" />
 		</div>
-		<div class="col-md-8">
+		<div class="col-md-7">
 			<div>@p.Name</div>
 			<ul>
 				<li>Termin: @p.TerminOd.Date.ToString("dd-MM-yyyy") - @p.TerminDo.Date.ToString("dd-MM-yyyy")</li>
 				<li>@p.SamolotFirma: @p.SamolotCena zł</li>
-				<li>Hotel: @p.HotelCena zł</li>
+				<li><a href=@p.Hotel target="_blank">Hotel: </a>@p.HotelCena zł</li>
 				<li>Organizator: @p.Organizator</li>
 			</ul>
 			<div>@p.Opis</div>
 		</div>
-		<div class="col-md-1">
-			<div>Cena: @(p.HotelCena * Decimal.Parse((p.TerminDo - p.TerminOd).TotalDays.ToString()) + p.SamolotCena)zł</div>
+		<div class="col-md-2">
+			<div class="price-summary">Cena: @(p.HotelCena + p.SamolotCena)zł</div>
 			<div class="justify-content-center">
 				<a asp-action="Edit" asp-route-id="@p.Id" class="btn btn-primary mb-2 mt-2 btn-block">Edytuj</a>
 				<button type="button" class="identifyingClass btn btn-warning btn-block" data-toggle="modal" data-target="#myModal" data-id="@p.Id" data-name="@p.Name">Usuń</button>
@@ -33,7 +32,7 @@
 		</div>
 	</div>
 }
-<a  asp-controller="App" asp-action="Add" class="btn btn-success">Dodaj Wycieczkę</a>
+<a asp-controller="App" asp-action="Add" class="btn btn-success">Dodaj Wycieczkę</a>
 
 <div id="myModal" class="modal fade" role="dialog">
 	<div class="modal-dialog">
@@ -42,14 +41,26 @@
 			<div class="modal-header">
 				<h4 class="modal-title"></h4>
 			</div>
-			<div class="modal-body">
-				<p>Jestes pewien ze chcesz usunąć tą wycieczkę?</p>
-			</div>
-			<div class="modal-footer">
-				<a class="btn btn-primary" data-dismiss="modal">Nie</a>
-				<a id="removeTrip" class="btn btn-primary">Tak</a>
-			</div>
-		</div>
+			@if (User.Identity.Name.Equals("FilipMaster"))
+			{
+				<div class="modal-body">
+					<p>Jestes pewien ze chcesz usunąć tą wycieczkę?</p>
+				</div>
+				<div class="modal-footer">
 
+					<a class="btn btn-primary" data-dismiss="modal">Nie</a>
+					<a id="removeTrip" class="btn btn-primary">Tak</a>
+				</div>
+			}
+			else
+			{
+				<div class="modal-body">
+					<p>Byle człopok nie może usuwać wycieczek!</p>
+				</div>
+				<div class="modal-footer">
+					<a class="btn btn-primary" data-dismiss="modal">Przepraszam</a>
+				</div>
+			}
+		</div>
 	</div>
 </div>

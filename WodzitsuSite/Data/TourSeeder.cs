@@ -40,6 +40,33 @@ namespace WodzitsuSite.Data
                 }
             }
 
+            Czlopok czlopok2 = await userManager.FindByEmailAsync("marcin.kitek1@gmail.com");
+            if (czlopok2 == null)
+            {
+                czlopok2 = new Czlopok()
+                {
+                    FirstName = "Marcin",
+                    LastName = "Kitek",
+                    Email = "marcin.kitek1@gmail.com",
+                    UserName = "Kitek"
+                };
+
+                try
+                {
+                    var restult = await userManager.CreateAsync(czlopok2, "Zakopane2019!");
+                    if (restult != IdentityResult.Success)
+                    {
+                        throw new InvalidOperationException("Could not create new user in seeder");
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    throw;
+                }
+                
+            }
+
             if (!context.Tours.Any())
             {
                 context.Tours.AddRange(

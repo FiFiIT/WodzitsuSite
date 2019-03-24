@@ -39,15 +39,12 @@
 		</nav>
 	</header>
 
-	<section class="container-fluid">
+	<section>
 		@RenderBody()
 	</section>
 
-	<footer class="fixed-bottom  text-center">
-		<div>Copyright @@ 2019 FiFIT</div>
-	</footer>
-
-	<script src="~/node_modules/jquery/dist/jquery.min.js"></script>
+	@*<script src="~/node_modules/jquery/dist/jquery.min.js"></script>*@
+	<script src="~/node_modules/jquery/dist/jquery.js"></script>
 	<script src="~/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	@RenderSection("Scripts", false)
 </body>
