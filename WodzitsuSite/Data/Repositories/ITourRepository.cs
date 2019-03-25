@@ -13,5 +13,7 @@ namespace WodzitsuSite.Data.Repositories
         void SaveTour(Tour tour);
         void UpdateTour(Tour editTour);
         void DeleteTour(int t);
+        IEnumerable<TourScore> GetTourScores(int id);
+        void ScoreTour(int tourId, decimal score, string v);
     }
 }

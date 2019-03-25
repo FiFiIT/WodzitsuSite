@@ -16,6 +16,6 @@ namespace WodzitsuSite.Data
         }
 
         public DbSet<Tour> Tours { get; set; }
-
+        public DbSet<TourScore> Scores { get; set; }
     }
 }

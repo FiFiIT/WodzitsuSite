@@ -51,4 +51,13 @@
 
 .evaluation {
 	margin-left: 30px;
-} 
+}
+
+.price-summary {
+	font-weight: bolder;
+}
+
+#star-score {
+	border: none;
+	background: none;
+}

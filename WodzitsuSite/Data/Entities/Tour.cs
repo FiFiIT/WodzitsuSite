@@ -31,6 +31,8 @@ namespace WodzitsuSite.Data.Entities
         [MinLength(10)]
         public string Opis { get; set; }
 
+        public List<TourScore> Scores { get; set; }
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             List<ValidationResult> res = new List<ValidationResult>();

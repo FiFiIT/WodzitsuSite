@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WodzitsuSite.Data.Entities;
 using WodzitsuSite.Data.Repositories;
+using WodzitsuSite.ViewModels;
 
 namespace WodzitsuSite.Controllers
 {
@@ -16,11 +18,13 @@ namespace WodzitsuSite.Controllers
     {
         private readonly ITourRepository repo;
         private readonly IHostingEnvironment env;
+        private readonly UserManager<Czlopok> userManager;
 
-        public AppController(ITourRepository repo, IHostingEnvironment environment)
+        public AppController(ITourRepository repo, IHostingEnvironment environment, UserManager<Czlopok> userManager)
         {
             this.repo = repo;
             env = environment;
+            this.userManager = userManager;
         }
 
         public IActionResult Index()
@@ -31,9 +35,20 @@ namespace WodzitsuSite.Controllers
         [Authorize]
         public IActionResult Wakacje()
         {
+            var model = new List<ScoreViewModel>();
             var trips = repo.GetAllTours();
+            foreach (var trip in trips)
+            {
+                var scoreViewModel = new ScoreViewModel()
+                {
+                    tour = trip,
+                    scores = repo.GetTourScores(trip.Id).ToList()
+                };
 
-            return View(trips);
+                model.Add(scoreViewModel);
+            }
+           
+            return View(model.OrderByDescending(t => t.ScoreTotal));
         }
 
         [HttpGet]
@@ -45,7 +60,7 @@ namespace WodzitsuSite.Controllers
         [HttpPost]
         public IActionResult Add(Tour createTour, List<IFormFile> files)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var zdjęcia = UploadFiles(files);
                 zdjęcia.Wait();
@@ -66,7 +81,7 @@ namespace WodzitsuSite.Controllers
         {
             Tour tour = repo.GetTour(Id);
 
-            if(tour == null)
+            if (tour == null)
             {
                 return RedirectToAction("Wakacje");
             }
@@ -77,7 +92,7 @@ namespace WodzitsuSite.Controllers
         [HttpPost]
         public IActionResult Edit(Tour editTour, List<IFormFile> files)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 ModelState.TryAddModelError("", "Nie udało się zaktualizowac wycieczki");
                 return View(editTour);
@@ -103,7 +118,7 @@ namespace WodzitsuSite.Controllers
         public IActionResult Delete(string id)
         {
             bool resutl = Int16.TryParse(id, out short tripID);
-            if(resutl)
+            if (resutl)
             {
                 repo.DeleteTour(tripID);
             }
@@ -113,13 +128,13 @@ namespace WodzitsuSite.Controllers
 
         private void RemoveFile(string fileName)
         {
-            if(String.IsNullOrEmpty(fileName))
+            if (String.IsNullOrEmpty(fileName))
             {
                 return;
             }
 
             var fullName = Path.Combine(env.WebRootPath, "img", Path.GetFileName(fileName));
-            if(System.IO.File.Exists(fullName))
+            if (System.IO.File.Exists(fullName))
             {
                 System.IO.File.Delete(fullName);
             }
@@ -129,7 +144,7 @@ namespace WodzitsuSite.Controllers
         {
             string retrunImg = String.Empty;
             long size = files.Sum(f => f.Length);
-            
+
             // full path to file in temp location
             var filePath = Path.Combine(env.WebRootPath, "img");
 
@@ -138,7 +153,7 @@ namespace WodzitsuSite.Controllers
                 if (formFile.Length > 0)
                 {
                     var destPath = Path.Combine(filePath, Path.GetFileName(formFile.FileName));
-                    if(retrunImg.Length > 0)
+                    if (retrunImg.Length > 0)
                     {
                         retrunImg += ";";
                     }
@@ -148,11 +163,34 @@ namespace WodzitsuSite.Controllers
                     {
                         await formFile.CopyToAsync(stream);
                     }
-                } 
+                }
             }
 
             return retrunImg;
         }
+        [HttpGet]
+        public IActionResult Score(int Id)
+        {
+            ScoreViewModel model = new ScoreViewModel();
+            model.tour = repo.GetTour(Id);
+            model.scores = repo.GetTourScores(Id).ToList();
 
+            if (model.tour != null)
+            {
+                return View(model);
+            }
+            else
+            {
+                return RedirectToAction("Wakacje");
+            }
+        }
+
+        [HttpPost]
+        public IActionResult Score(int TourId, decimal score)
+        {
+            repo.ScoreTour(TourId, score, userManager.GetUserId(User));
+
+            return RedirectToAction("Wakacje");
+        }
     }
 }

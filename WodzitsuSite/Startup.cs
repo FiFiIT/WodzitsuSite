@@ -40,8 +40,8 @@ namespace WodzitsuSite
             });
 
             services.AddTransient<TourSeeder>();
-            //services.AddDbContext<TourContext>(cfg => cfg.UseMySQL(Configuration.GetConnectionString("WodzitsuMySql")));
-            services.AddDbContext<TourContext>(cfg => cfg.UseSqlServer(Configuration.GetConnectionString("Wodzitsu")));
+            services.AddDbContext<TourContext>(cfg => cfg.UseMySql(Configuration.GetConnectionString("WodzitsuMySql")));
+            //services.AddDbContext<TourContext>(cfg => cfg.UseSqlServer(Configuration.GetConnectionString("Wodzitsu")));
             services.AddScoped<ITourRepository, TourRepository>();
             services.AddMvc();
         }

@@ -15,7 +15,7 @@ namespace WodzitsuSite.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.1-servicing-10028")
+                .HasAnnotation("ProductVersion", "2.2.3-servicing-35854")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -194,11 +194,14 @@ namespace WodzitsuSite.Migrations
 
                     b.Property<decimal>("HotelCena");
 
-                    b.Property<string>("Name");
+                    b.Property<string>("Name")
+                        .IsRequired();
 
-                    b.Property<string>("Opis");
+                    b.Property<string>("Opis")
+                        .IsRequired();
 
-                    b.Property<string>("Organizator");
+                    b.Property<string>("Organizator")
+                        .IsRequired();
 
                     b.Property<decimal>("SamolotCena");
 
@@ -213,6 +216,23 @@ namespace WodzitsuSite.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tours");
+                });
+
+            modelBuilder.Entity("WodzitsuSite.Data.Entities.TourScore", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("Score");
+
+                    b.Property<int>("TourID");
+
+                    b.Property<string>("UserId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Scores");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

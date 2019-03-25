@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -32,14 +33,41 @@ namespace WodzitsuSite.Data.Repositories
             return context.Tours.OrderBy(t => t.Name);
         }
 
+        public IEnumerable<Tour> GetAllToursWithScores()
+        {
+            throw new NotImplementedException();
+        }
+
         public Tour GetTour(int id)
         {
             return context.Tours.FirstOrDefault(t => t.Id == id);
         }
 
+        public IEnumerable<TourScore> GetTourScores(int id)
+        {
+            return context.Scores.Where(s => s.TourID == id);
+        }
+
         public void SaveTour(Tour tour)
         {
             context.Tours.Add(tour);
+            context.SaveChanges();
+        }
+
+        public void ScoreTour(int tourId, decimal score, string userID)
+        {
+            if (context.Scores.Any(s => s.TourID == tourId && s.UserId == userID))
+            {
+                var ts = context.Scores.FirstOrDefault(s => s.TourID == tourId && s.UserId == userID);
+                ts.Score = score;
+                context.Scores.Update(ts);
+            }
+            else
+            {
+                var ts = new TourScore() { UserId = userID, TourID = tourId, Score = score };
+                context.Scores.Add(ts);
+            }
+
             context.SaveChanges();
         }
 
