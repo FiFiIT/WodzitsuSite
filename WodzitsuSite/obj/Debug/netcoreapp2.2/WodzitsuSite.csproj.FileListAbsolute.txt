@@ -60,4 +60,4 @@ D:\GitHub\WodzitsuSite\WodzitsuSite\obj\Debug\netcoreapp2.2\WodzitsuSite.csproj.
 D:\GitHub\WodzitsuSite\WodzitsuSite\obj\Debug\netcoreapp2.2\WodzitsuSite.csprojAssemblyReference.cache
 D:\nauka\GitHub\WodzitsuSite\WodzitsuSite\obj\Debug\netcoreapp2.2\Razor\Views\Account\Manage.g.cshtml.cs
 D:\nauka\GitHub\WodzitsuSite\WodzitsuSite\obj\Debug\netcoreapp2.2\Razor\Views\App\Score.g.cshtml.cs
-D:\nauka\GitHub\WodzitsuSite\WodzitsuSite\obj\Debug\netcoreapp2.2\WodzitsuSite.csprojResolveAssemblyReference.cache
+D:\nauka\GitHub\WodzitsuSite\WodzitsuSite\obj\Debug\netcoreapp2.2\WodzitsuSite.csprojAssemblyReference.cache

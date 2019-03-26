@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -19,12 +20,14 @@ namespace WodzitsuSite.Controllers
         private readonly ITourRepository repo;
         private readonly IHostingEnvironment env;
         private readonly UserManager<Czlopok> userManager;
+        private readonly ILogger<AppController> logger;
 
-        public AppController(ITourRepository repo, IHostingEnvironment environment, UserManager<Czlopok> userManager)
+        public AppController(ITourRepository repo, IHostingEnvironment environment, UserManager<Czlopok> userManager, ILogger<AppController> logger)
         {
             this.repo = repo;
             env = environment;
             this.userManager = userManager;
+            this.logger = logger;
         }
 
         public IActionResult Index()
@@ -57,25 +60,35 @@ namespace WodzitsuSite.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Add(Tour createTour, List<IFormFile> files)
-        {
-            if (ModelState.IsValid)
-            {
-                var zdjęcia = UploadFiles(files);
-                zdjęcia.Wait();
-                createTour.Zdjecie = zdjęcia.Result.ToString();
+        //[HttpPost]
+        //public IActionResult Add(Tour createTour, List<IFormFile> files)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            var zdjęcia = UploadFiles(files);
+        //            zdjęcia.Wait();
+        //            createTour.Zdjecie = zdjęcia.Result.ToString();
 
-                repo.SaveTour(createTour);
+        //            repo.SaveTour(createTour);
 
-                return RedirectToAction("Wakacje", "App");
-            }
-            else
-            {
-                ModelState.TryAddModelError("", "Failed to login");
-                return View();
-            }
-        }
+        //            return RedirectToAction("Wakacje", "App");
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            logger.LogError($"Error while adding Trip: {ex.Message}");
+        //            ModelState.TryAddModelError("", $"Failed to add trip");
+        //            return View();
+        //        }
+                
+        //    }
+        //    else
+        //    {
+        //        ModelState.TryAddModelError("", "Failed to login");
+        //        return View();
+        //    }
+        //}
         [HttpGet]
         public IActionResult Edit(int Id)
         {
@@ -99,17 +112,26 @@ namespace WodzitsuSite.Controllers
             }
             else
             {
-                if (files.Count() > 0)
+                try
                 {
-                    //remove old picture
-                    RemoveFile(editTour.Zdjecie);
+                    if (files.Count() > 0)
+                    {
+                        //remove old picture
+                        RemoveFile(editTour.Zdjecie);
 
-                    var zdjęcia = UploadFiles(files);
-                    zdjęcia.Wait();
-                    editTour.Zdjecie = zdjęcia.Result.ToString();
+                        var zdjęcia = UploadFiles(files);
+                        zdjęcia.Wait();
+                        editTour.Zdjecie = zdjęcia.Result.ToString();
+                    }
+
+                    repo.UpdateTour(editTour);
                 }
-
-                repo.UpdateTour(editTour);
+                catch (Exception ex)
+                {
+                    logger.LogError($"Error while editing Trip: {ex.Message}");
+                    ModelState.TryAddModelError("", $"Nie udało się zaktualizowac wycieczki");
+                    return View(editTour);
+                }
             }
 
             return RedirectToAction("Wakacje");
@@ -168,6 +190,7 @@ namespace WodzitsuSite.Controllers
 
             return retrunImg;
         }
+
         [HttpGet]
         public IActionResult Score(int Id)
         {

@@ -5,10 +5,8 @@
 @{
 }
 @section Scripts {		
-	<script src="~/js/rater.js"></script>
-	<script src="~/js/starRating.js"></script>
 }
-<link href="~/css/Rating.css" rel="stylesheet" />
+
 @foreach (var p in Model)
 {
 	<div class="row border bg-light rounded p-1 mb-2">
@@ -19,21 +17,21 @@
 			<div>@p.tour.Name</div>
 			<ul>
 				<li>Termin: @p.tour.TerminOd.Date.ToString("dd-MM-yyyy") - @p.tour.TerminDo.Date.ToString("dd-MM-yyyy")</li>
-				<li>@p.tour.SamolotFirma: @p.tour.SamolotCena zł</li>
-				<li><a href=@p.tour.Hotel target="_blank">Hotel: </a>@p.tour.HotelCena zł</li>
+				<li>@p.tour.SamolotFirma: @p.tour.SamolotCena.ToString("F2") zł</li>
+				<li><a href=@p.tour.Hotel target="_blank">Hotel: </a>@p.tour.HotelCena.ToString("F2") zł</li>
 				<li>Organizator: @p.tour.Organizator</li>
 			</ul>
 			<div>@p.tour.Opis</div>
 		</div>
 		<div class="col-md-2">
-			<div class="price-summary">Cena: @(p.tour.HotelCena + p.tour.SamolotCena)zł</div>
+			<div class="price-summary">Cena: @((p.tour.HotelCena + p.tour.SamolotCena).ToString("F2")) zł</div>
 			<div class="justify-content-center">
-				<a asp-action="Edit" asp-route-id="@p.tour.Id" class="btn btn-primary mb-2 mt-2 btn-block">Edytuj</a>
+				<a asp-controller="App" asp-action="Edit" asp-route-id="@p.tour.Id" class="btn btn-primary mb-2 mt-2 btn-block">Edytuj</a>
 				<button type="button" class="identifyingClass btn btn-warning btn-block" data-toggle="modal" data-target="#myModal" data-id="@p.tour.Id" data-name="@p.tour.Name">Usuń</button>
 			</div>
 			<div class="container align-content-md-end">
-				<div>Średnia: @p.ScoreAvg</div>
-				<div>Suma: @p.ScoreTotal</div>
+				<div>Średnia: @p.ScoreAvg.ToString("F2")</div>
+				<div>Suma: @p.ScoreTotal.ToString("F2")</div>
 			</div>
 		</div>
 	</div>

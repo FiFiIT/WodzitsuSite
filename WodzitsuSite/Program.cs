@@ -16,9 +16,10 @@ namespace WodzitsuSite
     {
         public static void Main(string[] args)
         {
-            var host = CreateWebHostBuilder(args).Build();
+            var host = CreateWebHostBuilder(args)
+                .Build();
 
-            RunSeeding(host);
+            //RunSeeding(host);
 
             host.Run();
         }
@@ -32,7 +33,7 @@ namespace WodzitsuSite
                 var seeder = scope.ServiceProvider.GetService<TourSeeder>();
                 seeder.SeedAsync().Wait();
             }
-                
+
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
