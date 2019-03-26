@@ -22,11 +22,6 @@ namespace WodzitsuSite.Data
         {
             context.Database.EnsureCreated();
 
-            if(context.Tours.Any())
-            {
-                return;
-            }
-
             Czlopok czlopok = await userManager.FindByEmailAsync("filip.tyborowski@gmail.com");
             if (czlopok == null)
             {
@@ -38,11 +33,7 @@ namespace WodzitsuSite.Data
                     UserName = "Filip"
                 };
 
-                var restult = await userManager.CreateAsync(czlopok, "P@ssw0rd!");
-                if (restult != IdentityResult.Success)
-                {
-                    throw new InvalidOperationException("Could not create new user in seeder");
-                }
+                await userManager.CreateAsync(czlopok, "P@ssw0rd!");
             }
             //KITEK
             Czlopok kitek = await userManager.FindByEmailAsync("marcin.kitek1@gmail.com");
@@ -55,11 +46,7 @@ namespace WodzitsuSite.Data
                     Email = "marcin.kitek1@gmail.com",
                     UserName = "Kitek"
                 };
-                var kitekRestult = await userManager.CreateAsync(kitek, "Zakopane2019!");
-                if (kitekRestult != IdentityResult.Success)
-                {
-                    throw new InvalidOperationException("Could not create new user in seeder");
-                }
+                await userManager.CreateAsync(kitek, "Zakopane2019!");
             }
 
             //Adrian
@@ -73,11 +60,7 @@ namespace WodzitsuSite.Data
                     Email = "marcin.kitek1@gmail.com",
                     UserName = "Adrian"
                 };
-                var adrianRestult = await userManager.CreateAsync(adrian, "Zakopane2019!");
-                if (adrianRestult != IdentityResult.Success)
-                {
-                    throw new InvalidOperationException("Could not create new user in seeder");
-                }
+                await userManager.CreateAsync(adrian, "Zakopane2022!");
             }
 
             //Bialy
@@ -91,11 +74,7 @@ namespace WodzitsuSite.Data
                     Email = "marcin.kitek1@gmail.com",
                     UserName = "Modlinski"
                 };
-                var bialyRestult = await userManager.CreateAsync(bialy, "Zakopane2019!");
-                if (bialyRestult != IdentityResult.Success)
-                {
-                    throw new InvalidOperationException("Could not create new user in seeder");
-                }
+                await userManager.CreateAsync(bialy, "Zakopane2020!");
             }
 
             //Tobiasz
@@ -109,11 +88,7 @@ namespace WodzitsuSite.Data
                     Email = "marcin.kitek1@gmail.com",
                     UserName = "Tobiasz"
                 };
-                var tobiaszRestult = await userManager.CreateAsync(tobiasz, "Zakopane2019!");
-                if (tobiaszRestult != IdentityResult.Success)
-                {
-                    throw new InvalidOperationException("Could not create new user in seeder");
-                }
+                await userManager.CreateAsync(tobiasz, "Zakopane2021!");
             }
 
 

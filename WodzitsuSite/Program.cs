@@ -19,7 +19,7 @@ namespace WodzitsuSite
             var host = CreateWebHostBuilder(args)
                 .Build();
 
-            //RunSeeding(host);
+            RunSeeding(host);
 
             host.Run();
         }
@@ -38,6 +38,7 @@ namespace WodzitsuSite
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+
                 .UseStartup<Startup>();
     }
 }

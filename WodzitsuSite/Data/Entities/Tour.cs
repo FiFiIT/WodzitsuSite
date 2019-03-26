@@ -20,11 +20,9 @@ namespace WodzitsuSite.Data.Entities
 
         public string SamolotFirma { get; set; }
         [Required]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{F2}")]
         public decimal SamolotCena { get; set; }
         public string Hotel { get; set; }
         [Required]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{F2}")]
         public decimal HotelCena { get; set; }
         [Required]
         public string Organizator { get; set; }

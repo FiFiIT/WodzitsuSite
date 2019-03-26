@@ -49,7 +49,7 @@ namespace WodzitsuSite
                 options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
             });
 
-            //services.AddTransient<TourSeeder>();
+            services.AddTransient<TourSeeder>();
             //services.AddDbContext<TourContext>(cfg => cfg.UseSqlServer(Configuration.GetConnectionString("Wodzitsu")));
             services.AddScoped<ITourRepository, TourRepository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

@@ -60,35 +60,35 @@ namespace WodzitsuSite.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public IActionResult Add(Tour createTour, List<IFormFile> files)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            var zdjęcia = UploadFiles(files);
-        //            zdjęcia.Wait();
-        //            createTour.Zdjecie = zdjęcia.Result.ToString();
+        [HttpPost]
+        public IActionResult Add(Tour createTour, List<IFormFile> files)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var zdjęcia = UploadFiles(files);
+                    zdjęcia.Wait();
+                    createTour.Zdjecie = zdjęcia.Result.ToString();
 
-        //            repo.SaveTour(createTour);
+                    repo.SaveTour(createTour);
 
-        //            return RedirectToAction("Wakacje", "App");
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            logger.LogError($"Error while adding Trip: {ex.Message}");
-        //            ModelState.TryAddModelError("", $"Failed to add trip");
-        //            return View();
-        //        }
-                
-        //    }
-        //    else
-        //    {
-        //        ModelState.TryAddModelError("", "Failed to login");
-        //        return View();
-        //    }
-        //}
+                    return RedirectToAction("Wakacje", "App");
+                }
+                catch (Exception ex)
+                {
+                    logger.LogError($"Error while adding Trip: {ex.Message}");
+                    ModelState.TryAddModelError("", $"Failed to add trip");
+                    return View();
+                }
+
+            }
+            else
+            {
+                ModelState.TryAddModelError("", "Failed to login");
+                return View();
+            }
+        }
         [HttpGet]
         public IActionResult Edit(int Id)
         {
