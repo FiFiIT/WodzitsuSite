@@ -42,4 +42,11 @@
 	$("#imgInp").change(function () {
 		readURL(this);
 	}); 
+
+	var $opisWycieczki = $('.opis-wycieczki');
+	$opisWycieczki.each(function () {
+		if ($(this).text().length > 300) {
+			$(this).text($(this).text().substr(0, 300) + " ...czytaj dalej");
+		}
+	});
 });

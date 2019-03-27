@@ -129,7 +129,7 @@ namespace WodzitsuSite.Controllers
                 catch (Exception ex)
                 {
                     logger.LogError($"Error while editing Trip: {ex.Message}");
-                    ModelState.TryAddModelError("", $"Nie udało się zaktualizowac wycieczki");
+                    ModelState.TryAddModelError("", $"Nie udało się załadować zdjęcia: {ex.Message}");
                     return View(editTour);
                 }
             }
@@ -154,12 +154,19 @@ namespace WodzitsuSite.Controllers
             {
                 return;
             }
-
-            var fullName = Path.Combine(env.WebRootPath, "img", Path.GetFileName(fileName));
-            if (System.IO.File.Exists(fullName))
+            try
             {
-                System.IO.File.Delete(fullName);
+                var fullName = Path.Combine(env.WebRootPath, "img", Path.GetFileName(fileName));
+                if (System.IO.File.Exists(fullName))
+                {
+                    System.IO.File.Delete(fullName);
+                }
             }
+            catch (Exception ex)
+            {
+                ModelState.TryAddModelError("", $"Nie udało się usunąć zdjęcia: {ex.Message}");
+            }
+            
         }
 
         private async Task<string> UploadFiles(List<IFormFile> files)

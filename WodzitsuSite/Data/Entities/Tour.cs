@@ -29,6 +29,7 @@ namespace WodzitsuSite.Data.Entities
         public string Zdjecie { get; set; }
         [Required]
         [MinLength(10)]
+        [DataType(DataType.MultilineText)]
         public string Opis { get; set; }
 
         public List<TourScore> Scores { get; set; }

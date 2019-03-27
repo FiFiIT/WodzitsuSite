@@ -22,46 +22,46 @@ namespace WodzitsuSite.Data
         {
             context.Database.EnsureCreated();
 
-            Czlopok czlopok = await userManager.FindByEmailAsync("filip.tyborowski@gmail.com");
-            if (czlopok == null)
-            {
-                czlopok = new Czlopok()
-                {
-                    FirstName = "Filip",
-                    LastName = "Tyborowski",
-                    Email = "filip.tyborowski@gmail.com",
-                    UserName = "Filip"
-                };
+            //Czlopok czlopok = await userManager.FindByEmailAsync("filip.tyborowski@gmail.com");
+            //if (czlopok == null)
+            //{
+            //    czlopok = new Czlopok()
+            //    {
+            //        FirstName = "Filip",
+            //        LastName = "Tyborowski",
+            //        Email = "filip.tyborowski@gmail.com",
+            //        UserName = "Filip"
+            //    };
 
-                await userManager.CreateAsync(czlopok, "P@ssw0rd!");
-            }
+            //    await userManager.CreateAsync(czlopok, "P@ssw0rd!");
+            //}
             //KITEK
-            Czlopok kitek = await userManager.FindByEmailAsync("marcin.kitek1@gmail.com");
-            if (kitek == null)
-            {
-                kitek = new Czlopok()
-                {
-                    FirstName = "Marcin",
-                    LastName = "Kitek",
-                    Email = "marcin.kitek1@gmail.com",
-                    UserName = "Kitek"
-                };
-                await userManager.CreateAsync(kitek, "Zakopane2019!");
-            }
+            //Czlopok kitek = await userManager.FindByEmailAsync("marcin.kitek1@gmail.com");
+            //if (kitek == null)
+            //{
+            //    kitek = new Czlopok()
+            //    {
+            //        FirstName = "Marcin",
+            //        LastName = "Kitek",
+            //        Email = "marcin.kitek1@gmail.com",
+            //        UserName = "Kitek"
+            //    };
+            //    await userManager.CreateAsync(kitek, "Zakopane2019!");
+            //}
 
             //Adrian
-            Czlopok adrian = await userManager.FindByEmailAsync("Szturo@gmail.com");
-            if (adrian == null)
-            {
-                adrian = new Czlopok()
-                {
-                    FirstName = "Adrian",
-                    LastName = "Szturo",
-                    Email = "marcin.kitek1@gmail.com",
-                    UserName = "Adrian"
-                };
-                await userManager.CreateAsync(adrian, "Zakopane2022!");
-            }
+            //Czlopok adrian = await userManager.FindByEmailAsync("Szturo@gmail.com");
+            //if (adrian == null)
+            //{
+            //    adrian = new Czlopok()
+            //    {
+            //        FirstName = "Adrian",
+            //        LastName = "Szturo",
+            //        Email = "Szturo@gmail.com",
+            //        UserName = "Adrian"
+            //    };
+            //    await userManager.CreateAsync(adrian, "Zakopane2022!");
+            //}
 
             //Bialy
             Czlopok bialy = await userManager.FindByEmailAsync("Modlinski@gmail.com");
@@ -69,9 +69,9 @@ namespace WodzitsuSite.Data
             {
                 bialy = new Czlopok()
                 {
-                    FirstName = "Michał",
+                    FirstName = "Michal",
                     LastName = "Modlinski",
-                    Email = "marcin.kitek1@gmail.com",
+                    Email = "Modlinski@gmail.com",
                     UserName = "Modlinski"
                 };
                 await userManager.CreateAsync(bialy, "Zakopane2020!");
@@ -85,7 +85,7 @@ namespace WodzitsuSite.Data
                 {
                     FirstName = "Tobiasz",
                     LastName = "Pesla",
-                    Email = "marcin.kitek1@gmail.com",
+                    Email = "tobiasz@gmail.com",
                     UserName = "Tobiasz"
                 };
                 await userManager.CreateAsync(tobiasz, "Zakopane2021!");

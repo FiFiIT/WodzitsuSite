@@ -17,19 +17,20 @@
 			<li><a href=@Model.tour.Hotel target="_blank">Hotel: </a>@Model.tour.HotelCena.ToString("F2") zł</li>
 			<li>Organizator: @Model.tour.Organizator</li>
 		</ul>
-		<div>@Model.tour.Opis</div>
+		<div>@Html.Raw(Model.tour.Opis.Replace(Environment.NewLine, "<br/>"))</div>
+		
 	</div>
 	<div class="col-md-2">
 		<div class="price-summary">Cena: @((Model.tour.HotelCena + Model.tour.SamolotCena).ToString("F2"))zł</div>
-		<div>Średnia: @Model.ScoreAvg.ToString("F2")	Suma: @Model.ScoreTotal.ToString("F2")</div>
+		<div>Średnia: @Model.ScoreAvg.ToString("F0")	Suma: @Model.ScoreTotal.ToString("F0")</div>
 		<form method="post">
 			<div class="container">
 				<div class="rate"></div>
 				<input hidden="hidden" name="tourId" value="@Model.tour.Id" />
-				<input id="star-score" readonly="readonly" name="score" />
+				<input id="star-score" readonly="readonly" name="score" hidden="hidden" />
 			</div>
 			<div>
-				<input class="btn btn-primary" type="submit" value="Ocen" />
+				<input id="btn-score" class="btn btn-primary" type="submit" value="Ocen" />
 			</div>
 		</form>
 	</div>
