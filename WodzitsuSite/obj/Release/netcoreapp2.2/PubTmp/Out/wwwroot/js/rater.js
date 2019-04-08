@@ -11,7 +11,7 @@
         var width = html_calc.width();
         html_calc.remove();
 
-        if (width == 0)
+        if (width === 0)
         {
             var total = 0;
             $(this).eq(0).children().each(function(){
@@ -255,7 +255,7 @@
         var x = ev.pageX - $(this.element).offset().left - pad;
         var val = this.toValue(x, true);
 
-        if (val != this.value)
+        if (val !== this.value)
         {
             this.raise_select_layer = false;
         }
@@ -510,7 +510,7 @@
 
     $.fn.rate.settings = {
         max_value: 5,
-        step_size: 0.5,
+        step_size: 1,
         initial_value: 0,
         symbols: {
             utf8_star: {

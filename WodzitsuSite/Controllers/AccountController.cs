@@ -77,28 +77,39 @@ namespace WodzitsuSite.Controllers
                 return RedirectToAction("Index", "App");
             }
         }
-        //[HttpPost]
-        //public async Task<IActionResult> Manage(string password, string password2)
-        //{
-        //    if (!String.IsNullOrEmpty(password) && !String.IsNullOrEmpty(password2))
-        //    {
-        //        var czlopok = await userManager.GetUserAsync(User);
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> Create(Czlopok czlopok, string password, string password2)
+        {
+            if (String.IsNullOrEmpty(password) && String.IsNullOrEmpty(password2))
+            {
+                ModelState.TryAddModelError("Password", "Password cannot be empty.");
+                return View(czlopok);
+            }
+            else if(password != password2)
+            {
+                ModelState.TryAddModelError("Password", "Passwords must be equal.");
+                return View(czlopok);
+            }
 
-        //        if (password == password2)
-        //        {
-        //            userManager.PasswordHasher.HashPassword(czlopok, password); 
-        //            var result = await userManager.UpdateAsync(czlopok);
-        //        }
-        //        else
-        //        {
-        //            ModelState.TryAddModelError("", "Passwords are not equal");
-        //            return View(czlopok);
-        //        }
+            if(!ModelState.IsValid)
+            {
+                return View(czlopok);
+            }
 
-        //    }
+            var result = await userManager.CreateAsync(czlopok, password);
+            if(result.Succeeded != true)
+            {
+                ModelState.TryAddModelError("Create Account", "Something goes wrong.");
+                return View(czlopok);
+            }
 
-        //    return View();
-        //}
+            return RedirectToAction("Index", "App");
+        }
 
         [HttpPost]
         public async Task<IActionResult> Manage(Czlopok czlopok, string password, string password2)

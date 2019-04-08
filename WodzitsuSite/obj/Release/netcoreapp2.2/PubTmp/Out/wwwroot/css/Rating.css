@@ -1,4 +1,12 @@
-﻿.rate-base-layer {
+﻿.rate {
+	font-size: 30px;
+}
+
+#btn-score {
+	margin-top: 8px;
+}
+
+.rate-base-layer {
 	color: #aaa;
 }
 

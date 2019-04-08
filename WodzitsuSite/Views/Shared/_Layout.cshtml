@@ -28,6 +28,10 @@
 						{
 							<li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Logout">Wyloguj</a></li>
 							<li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Manage">Zarządzaj</a></li>
+							@if (User.Identity.Name.Equals("Filip"))
+							{
+								<li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Create">Dodaj</a></li>
+							}
 						}
 						else
 						{

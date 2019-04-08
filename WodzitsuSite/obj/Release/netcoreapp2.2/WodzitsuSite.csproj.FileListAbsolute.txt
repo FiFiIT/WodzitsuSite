@@ -60,3 +60,5 @@ D:\nauka\GitHub\WodzitsuSite\WodzitsuSite\obj\Release\netcoreapp2.2\WodzitsuSite
 D:\nauka\GitHub\WodzitsuSite\WodzitsuSite\obj\Release\netcoreapp2.2\WodzitsuSite.dll
 D:\nauka\GitHub\WodzitsuSite\WodzitsuSite\obj\Release\netcoreapp2.2\WodzitsuSite.pdb
 D:\nauka\GitHub\WodzitsuSite\WodzitsuSite\obj\Release\netcoreapp2.2\WodzitsuSite.csproj.CopyComplete
+D:\nauka\GitHub\WodzitsuSite\WodzitsuSite\obj\Release\netcoreapp2.2\WodzitsuSite.csprojAssemblyReference.cache
+D:\nauka\GitHub\WodzitsuSite\WodzitsuSite\obj\Release\netcoreapp2.2\Razor\Views\Account\Create.g.cshtml.cs
