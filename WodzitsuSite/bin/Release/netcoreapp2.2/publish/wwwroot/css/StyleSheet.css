@@ -1,0 +1,63 @@
+﻿.btn-file {
+	position: relative;
+	overflow: hidden;
+}
+
+	.btn-file input[type=file] {
+		position: absolute;
+		top: 0;
+		right: 0;
+		min-width: 100%;
+		min-height: 100%;
+		font-size: 100px;
+		text-align: right;
+		filter: alpha(opacity=0);
+		opacity: 0;
+		outline: none;
+		background: white;
+		cursor: inherit;
+		display: block;
+	}
+
+#img-upload {
+	width: 100%;
+}
+
+#img-Name {
+	border: 0px solid;
+	background: none;
+	/*display: none;*/
+}
+
+@media (min-width: 768px) {
+	.navbar-brand.abs {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		text-align: center;
+	}
+}
+#colorstar {
+	color: #ee8b2d;
+}
+
+.badForm {
+	color: #FF0000;
+}
+
+.goodForm {
+	color: #00FF00;
+}
+
+.evaluation {
+	margin-left: 30px;
+}
+
+.price-summary {
+	font-weight: bolder;
+}
+
+#star-score {
+	border: none;
+	background: none;
+}

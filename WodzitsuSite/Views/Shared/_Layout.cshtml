@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
 	<link href="~/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="~/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+	<link href="~/css/StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
 	<header>
@@ -21,21 +23,32 @@
 						<li class="nav-item"><a class="nav-link" asp-controller="App" asp-action="Index">Home</a></li>
 						<li class="nav-item"><a class="nav-link" asp-controller="App" asp-action="Wakacje">Wakacje</a></li>
 					</ul>
+					<ul class="navbar-nav ml-auto">
+						@if (User.Identity.IsAuthenticated)
+						{
+							<li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Logout">Wyloguj</a></li>
+							<li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Manage">Zarządzaj</a></li>
+							@if (User.Identity.Name.Equals("Filip"))
+							{
+								<li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Create">Dodaj</a></li>
+							}
+						}
+						else
+						{
+							<li class="nav-item"><a class="nav-link" asp-controller="Account" asp-action="Login">Zaloguj</a></li>
+						}
+					</ul>
 				</div>
 			</div>
 		</nav>
 	</header>
 
-	<section class="container-fluid">
-		<h2>@ViewBag.Title</h2>
+	<section>
 		@RenderBody()
 	</section>
 
-	<footer class="fixed-bottom  text-center">
-		<div>Copyright @@ 2019 FiFIT</div>
-	</footer>
-
-	<script src="~/node_modules/jquery/dist/jquery.min.js"></script>
+	@*<script src="~/node_modules/jquery/dist/jquery.min.js"></script>*@
+	<script src="~/node_modules/jquery/dist/jquery.js"></script>
 	<script src="~/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 	@RenderSection("Scripts", false)
 </body>

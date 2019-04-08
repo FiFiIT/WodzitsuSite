@@ -1,28 +1,72 @@
 ﻿@*
 	For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model IEnumerable<Tour>
+@model IEnumerable<ScoreViewModel>
 @{
 }
+@section Scripts {		
+<script src="~/js/JavaScript.js"></script>
+}
+
 @foreach (var p in Model)
 {
 	<div class="row border bg-light rounded p-1 mb-2">
-		<div class="col-xl-3">
-			<img src="~/img/@p.Zdjecie" class="img-fluid img-rounded"/>
+		<div class="col-md-3">
+			<a asp-controller="App" asp-action="Score" asp-route-id="@p.tour.Id"><img src="~/img/@p.tour.Zdjecie" class="img-fluid img-rounded" /></a>
 		</div>
-		<div class="col-xl-8">
-			<div>@p.Name</div>
+		<div class="col-md-7">
+			<div>@p.tour.Name</div>
 			<ul>
-				<li>Termin: @p.TerminOd.Date.ToString("dd-MM-yyyy") - @p.TerminDo.Date.ToString("dd-MM-yyyy")</li>
-				<li>@p.SamolotFirma: @p.SamolotCena zł</li>
-				<li>Hotel: @p.HotelCena zł</li>
-				<li>Organizator: @p.Organizator</li>
+				<li>Termin: @p.tour.TerminOd.Date.ToString("dd-MM-yyyy") - @p.tour.TerminDo.Date.ToString("dd-MM-yyyy")</li>
+				<li>@p.tour.SamolotFirma: @p.tour.SamolotCena.ToString("F2") zł</li>
+				<li><a href=@p.tour.Hotel target="_blank">Hotel: </a>@p.tour.HotelCena.ToString("F2") zł</li>
+				<li>Organizator: @p.tour.Organizator</li>
 			</ul>
-			<div>@p.Opis</div>
+			<div class="opis-wycieczki">@p.tour.Opis</div>
+			
 		</div>
-		<div class="col-xl-1">
-			<div>Cena: @(p.HotelCena * Decimal.Parse((p.TerminDo - p.TerminOd).TotalDays.ToString()) + p.SamolotCena)zł</div>
-			<div></div>
+		<div class="col-md-2">
+			<div class="price-summary">Cena: @((p.tour.HotelCena + p.tour.SamolotCena).ToString("F2")) zł</div>
+			<div class="justify-content-center">
+				<a asp-controller="App" asp-action="Edit" asp-route-id="@p.tour.Id" class="btn btn-primary mb-2 mt-2 btn-block">Edytuj</a>
+				<button type="button" class="identifyingClass btn btn-warning btn-block" data-toggle="modal" data-target="#myModal" data-id="@p.tour.Id" data-name="@p.tour.Name">Usuń</button>
+			</div>
+			<div class="container align-content-md-end">
+				<div>Średnia: @p.ScoreAvg.ToString("F0")</div>
+				<div>Suma: @p.ScoreTotal.ToString("F0")</div>
+			</div>
 		</div>
 	</div>
 }
+<a asp-controller="App" asp-action="Add" class="btn btn-success">Dodaj Wycieczkę</a>
+
+<div id="myModal" class="modal fade" role="dialog">
+	<div class="modal-dialog">
+		<!-- Modal content-->
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title"></h4>
+			</div>
+			@if (User.Identity.Name.Equals("FilipMaster"))
+			{
+				<div class="modal-body">
+					<p>Jestes pewien ze chcesz usunąć tą wycieczkę?</p>
+				</div>
+				<div class="modal-footer">
+
+					<a class="btn btn-primary" data-dismiss="modal">Nie</a>
+					<a id="removeTrip" class="btn btn-primary">Tak</a>
+				</div>
+			}
+			else
+			{
+				<div class="modal-body">
+					<p>Byle człopok nie może usuwać wycieczek!</p>
+				</div>
+				<div class="modal-footer">
+					<a class="btn btn-primary" data-dismiss="modal">Przepraszam</a>
+				</div>
+			}
+		</div>
+	</div>
+</div>
